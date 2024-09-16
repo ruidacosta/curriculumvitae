@@ -48,14 +48,19 @@
 %%%%%%%%%
 
 \RequirePackage[quiet]{fontspec}
-\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
+%\RequirePackage[math-style=TeX,vargreek-shape=unicode]{unicode-math}
+\RequirePackage{unicode-math}
 
-\newfontfamily\bodyfont[]{Helvetica Neue}
-\newfontfamily\thinfont[]{Helvetica Neue UltraLight}
-\newfontfamily\headingfont[]{Helvetica Neue Condensed Bold}
+%\newfontfamily\bodyfont[]{Helvetica Neue}
+%\newfontfamily\thinfont[]{Helvetica Neue UltraLight}
+%\newfontfamily\headingfont[]{Helvetica Neue Condensed Bold}
+\newfontfamily\bodyfont[]{Roboto}
+\newfontfamily\thinfont[]{Roboto Thin}
+\newfontfamily\headingfont[]{Roboto Condensed Bold}
 
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont[Mapping=tex-text, Color=textcolor]{Helvetica Neue Light}
+%\setmainfont[Mapping=tex-text, Color=textcolor]{Helvetica Light}
+\setmainfont[Mapping=tex-text, Color=textcolor]{Roboto Light}
 
 %\setmathfont{XITS Math}
 
@@ -174,14 +179,23 @@
   \end{tabular*}
 }
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
-\newcommand{\entry}[4]{%
-  #1&\parbox[t]{11.8cm}{%
+\newcommand{\entry}[5]{%
+  {\small #1}&\parbox[t]{11.8cm}{%
+    \textbf{#2}\\%
+    %\textsl{#3}%
+    \textbf{\emph{#3}}
+    \hfill%
+    {\footnotesize\addfontfeature{Color=lightgray} #4}\\%
+    #5\vspace{\parsep}%
+  }\\}
+ 
+\newcommand{\entryedu}[4]{%
+  {\small #1}&\parbox[t]{11.8cm}{%
     \textbf{#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
     #4\vspace{\parsep}%
   }\\}
-
 
 %%%%%%%%%%%%%%
 % Side block %
